@@ -22,12 +22,14 @@
           {{ tag.theme }}
         </td>
         <td>
-          <a href="{% url 'tasks:tag-update' pk=tag.id%}" class="btn btn-secondary link-to-page">Update
+          <a href="{% url 'tasks:tag-update' pk=tag.id%}" class="btn btn-secondary link-to-page">
+            Update
           </a>
         </td>
         <td>
-          <a href="{% url 'tasks:tag-update' pk=tag.id%}" class="btn btn-danger link-to-page">
+          <a href="{% url 'tasks:tag-delete' pk=tag.id%}" class="btn btn-danger link-to-page">
           Delete
+          </a>
         </td>
         </tr>
 

@@ -23,7 +23,7 @@ urlpatterns = [
         name="task-update",
     ),
     path(
-        "tags/<int:pk>/delete/",
+        "tasks/<int:pk>/delete/",
         TaskDeleteView.as_view(),
         name="task-delete",
     ),
