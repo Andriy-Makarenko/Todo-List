@@ -2,37 +2,55 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-    <h1>
-      Cook List
-      <br>
-{#      <a href="{% url 'restaurant:cook-create' %}" class="btn btn-primary link-to-page">#}
-        Create
-      </a>
-    </h1>
+     <h1>
+    TODO list
+{#    <a href="{% url 'taxi:car-create' %}" class="btn btn-primary link-to-page">#}
+{#      Create#}
+{#    </a>#}
+  </h1>
 
-  </form>
-  
-    {% if cook_list %}
-    <table class="table">
-      <tr>
-        <th>ID</th>
-        <th>Username</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Years of experience</th>
-      </tr>
-    {% for cook in cook_list %}
-      <tr>
-        <td>{{ cook.id }}</td>
-        <td><a href="{{ cook.get_absolute_url }}">{{ cook.username }} {% if user == cook %} (Me){% endif %}</a></td>
-        <td>{{ cook.first_name }}</td>
-        <td>{{ cook.last_name }}</td>
-        <td>{{ cook.years_of_experience }}</td>
-      </tr>
-    {% endfor %}
+    {% if task_list %}
+    <ul>
+      {% for task in task_list %}
+        <h4>{{ task.content }}</h4>
+        {% if task.is_done == False %}
+          <strong style="color: red">Not done</strong>
+        {% else %}
+            <strong style="color: green">Done</strong>
+        {% endif %}
 
-    </table>
+        Created: {{ task.deadline }}
+        <div style="color: red">Deadline: {{ task.creation_date }}</div>
+        Tags: {{ task.tags }}
+
+        <br>
+
+      {% endfor %}
+    </ul>
     {% else %}
-      <p>There are no cooks at the kitchen.</p>
+    <p>There are is nothing to do</p>
     {% endif %}
+
+
+{##}
+{#   <table class="table">#}
+{##}
+{##}
+{#      <tr>#}
+{#        <td>{{ task.content }}#}
+
+{#        dffd#}
+{##}
+{#        </td>#}
+{#        <td><a href="{{ cook.get_absolute_url }}">{{ cook.username }} {% if user == cook %} (Me){% endif %}</a></td>#}
+{#        <td>{{ cook.first_name }}</td>#}
+{#        <td>{{ cook.last_name }}</td>#}
+{#        <td>{{ cook.years_of_experience }}</td>#}
+{#      </tr>#}
+{#    {% endfor %}#}
+{##}
+{#    </table>#}
+{#    {% else %}#}
+{#      <p>There are is nothing to do.</p>#}
+{#    {% endif %}#}
 {% endblock %}

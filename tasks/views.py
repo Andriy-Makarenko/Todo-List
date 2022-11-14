@@ -33,8 +33,33 @@ def index(request):
     return render(request, "tasks/index.html", context=context)
 
 
-# class DishTypeListView(LoginRequiredMixin, generic.ListView):
-#     model = DishType
-#     context_object_name = "dish_type_list"
-#     template_name = "restaurant/dish_type_list.html"
-#     queryset = DishType.objects.all()
+class TaskListView(generic.ListView):
+    model = Task
+    queryset = Task.objects.all()
+
+
+class TaskUpdateView(generic.UpdateView):
+    model = Task
+    fields = "__all__"
+    success_url = reverse_lazy("tasks:task-list")
+
+
+class TaskDeleteView(generic.DeleteView):
+    model = Task
+    success_url = reverse_lazy("tasks:task-list")
+
+
+class TagListView(generic.ListView):
+    model = Tag
+    queryset = Tag.objects.all()
+
+
+class TagUpdateView(generic.UpdateView):
+    model = Tag
+    fields = "__all__"
+    success_url = reverse_lazy("tasks:tag-list")
+
+
+class TagDeleteView(generic.DeleteView):
+    model = Tag
+    success_url = reverse_lazy("tasks:tag-list")

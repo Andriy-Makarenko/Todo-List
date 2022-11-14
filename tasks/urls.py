@@ -2,30 +2,46 @@ from django.urls import path
 
 from .views import (
     index,
+    TaskListView,
+    TaskUpdateView,
+    TaskDeleteView,
+    TagListView,
+    TagUpdateView,
+    TagDeleteView,
 )
 
 urlpatterns = [
     path("", index, name="index"),
-    # path(
-    #     "dish_types/",
-    #     DishTypeListView.as_view(),
-    #     name="dish-type-list",
-    # ),
-    # path(
-    #     "dish_types/create/",
-    #     DishTypeCreateView.as_view(),
-    #     name="dish-type-create",
-    # ),
-    # path(
-    #     "dish_types/<int:pk>/update/",
-    #     DishTypeUpdateView.as_view(),
-    #     name="dish-type-update",
-    # ),
-    # path(
-    #     "dish_types/<int:pk>/delete/",
-    #     DishTypeDeleteView.as_view(),
-    #     name="dish-type-delete",
-    # ),
+    path(
+        "tasks/",
+        TaskListView.as_view(),
+        name="task-list",
+    ),
+    path(
+        "tasks/<int:pk>/update/",
+        TaskUpdateView.as_view(),
+        name="task-update",
+    ),
+    path(
+        "tags/<int:pk>/delete/",
+        TaskDeleteView.as_view(),
+        name="task-delete",
+    ),
+    path(
+        "tags/",
+        TagListView.as_view(),
+        name="tag-list",
+    ),
+    path(
+        "tags/<int:pk>/update/",
+        TagUpdateView.as_view(),
+        name="tag-update",
+    ),
+    path(
+        "tags/<int:pk>/delete/",
+        TagDeleteView.as_view(),
+        name="tag-delete",
+    ),
 ]
 
 app_name = "tasks"

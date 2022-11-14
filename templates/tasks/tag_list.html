@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <h1>
+    Tags
+{#    <a href="{% url 'restaurant:dish-create' %}" class="btn btn-primary link-to-page">#}
+{#      Create#}
+{#    </a>#}
+  </h1>
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Update</th>
+      <th>Delete</th>
+    </tr>
+  {% if tag_list %}
+
+      {% for tag in tag_list %}
+        <tr>
+        <td>
+          {{ tag.theme }}
+        </td>
+        <td>
+          <a href="{% url 'tasks:tag-update' pk=tag.id%}" class="btn btn-secondary link-to-page">Update
+          </a>
+        </td>
+        <td>
+          <a href="{% url 'tasks:tag-update' pk=tag.id%}" class="btn btn-danger link-to-page">
+          Delete
+        </td>
+        </tr>
+
+      {% endfor %}
+    </table>
+  {% else %}
+
+    <p>There are no dishes at the kitchen</p>
+  {% endif %}
+
+
+
+{% endblock %}
