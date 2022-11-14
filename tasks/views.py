@@ -38,6 +38,13 @@ class TaskListView(generic.ListView):
     queryset = Task.objects.all()
 
 
+class TaskCreateView(generic.CreateView):
+    model = Task
+    fields = "__all__"
+    # form_class = DishForm
+    success_url = reverse_lazy("restaurant:dish-list")
+
+
 class TaskUpdateView(generic.UpdateView):
     model = Task
     fields = "__all__"
