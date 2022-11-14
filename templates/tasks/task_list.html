@@ -25,13 +25,24 @@
         Tags: {% for tag in task.tags.all %}
                 {{ tag.theme }}
 
-        <a href="{% url 'tasks:task-delete' pk=task.id%}" class="btn btn-danger link-to-page">
+        <a href="{% url 'tasks:task-delete' pk=task.id%}" style="color: blue">
           Delete
         </a>
 
-        <a href="{% url 'tasks:task-update' pk=task.id%}" class="btn btn-secondary link-to-page">
+        <a href="{% url 'tasks:task-update' pk=task.id%}" style="color: blue">
           Update
         </a>
+        {% if task.is_done %}
+
+        <a href="{% url 'tasks:task-list' %}" class="btn btn-secondary link-to-page">
+          Undo
+        </a>
+
+        {% else %}
+          <a href="{% url 'tasks:task-list' %}" class="btn btn-success link-to-page">
+          Complete
+        </a>
+        {% endif %}
 
 
 
