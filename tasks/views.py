@@ -41,8 +41,7 @@ class TaskListView(generic.ListView):
 class TaskCreateView(generic.CreateView):
     model = Task
     fields = "__all__"
-    # form_class = DishForm
-    success_url = reverse_lazy("restaurant:dish-list")
+    success_url = reverse_lazy("tasks:task-create")
 
 
 class TaskUpdateView(generic.UpdateView):
@@ -59,6 +58,12 @@ class TaskDeleteView(generic.DeleteView):
 class TagListView(generic.ListView):
     model = Tag
     queryset = Tag.objects.all()
+
+
+class TagCreateView(generic.CreateView):
+    model = Tag
+    fields = "__all__"
+    success_url = reverse_lazy("tasks:tag-list")
 
 
 class TagUpdateView(generic.UpdateView):
