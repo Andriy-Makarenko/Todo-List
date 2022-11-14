@@ -31,3 +31,10 @@ def index(request):
     }
 
     return render(request, "tasks/index.html", context=context)
+
+
+# class DishTypeListView(LoginRequiredMixin, generic.ListView):
+#     model = DishType
+#     context_object_name = "dish_type_list"
+#     template_name = "restaurant/dish_type_list.html"
+#     queryset = DishType.objects.all()
